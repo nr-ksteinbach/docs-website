@@ -54,7 +54,7 @@ For a comprehensive list of specific Windows versions, check the table of [compa
 * The [infrastructure agent](/docs/infrastructure/install-infrastructure-agent/get-started/install-infrastructure-agent-new-relic) installed.
 * Install the [infrastructure agent](/docs/infrastructure/install-infrastructure-agent/get-started/install-infrastructure-agent-new-relic) on a Linux or Windows OS host, or on a host capable of remotely accessing where SQL Server is installed.
 
-* Requires SQL Server user or domain user with [user privileges](#users-privileges) for both `CONNECT` and `VIEW SERVER STATE`, and `READ` access permissions.
+* Requires SQL Server user or domain user with [user privileges](#users-privileges) for `CONNECT`, `VIEW SERVER STATE` and `VIEW ANY DEFINITION` access permissions.
 
 ## Install and activate the integration [#install]
 
@@ -111,7 +111,7 @@ To install the Microsoft SQL Server integration, follow the instructions for you
 
 ## Enable your Microsoft SQL Server [#enable-microsoft-sql-server]
 
-For the Microsoft SQL Server to be monitored, you need a user with `CONNECT`, `VIEW SERVER STATE`, and read access permissions.
+For the Microsoft SQL Server to be monitored, you need a user with `CONNECT`, `VIEW SERVER STATE`, and `VIEW ANY DEFINITION` permissions.
 
 <Callout variant="tip">
   Check the Microsoft documentation for details on [creating logins](https://docs.microsoft.com/en-us/sql/t-sql/statements/create-login-transact-sql?view=sql-server-2017) and [users](https://docs.microsoft.com/en-us/sql/t-sql/statements/create-user-transact-sql?view=sql-server-2017) in Microsoft SQL Server.
@@ -135,7 +135,7 @@ Create a new login and grant the necessary permissions:
       GRANT VIEW ANY DEFINITION TO newrelic;
     ```
 
-    2. Use the following statements to grant `READ` access privileges to the user:
+    2. Use the following statements to grant DB `public` role privileges to the user:
 
     ```sql
     DECLARE @name SYSNAME
@@ -179,7 +179,7 @@ Create a new login and grant the necessary permissions:
       GRANT VIEW ANY DEFINITION TO [Domain\User];
     ```
 
-    2. Use the following statements to grant `READ` access privileges to the user:
+    2. Use the following statements to grant `public` role privileges to the user:
 
     ```sql
     DECLARE @name SYSNAME
